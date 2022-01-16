@@ -1,14 +1,19 @@
+REM To use MineSwitcher simply put it in a directory above your miners and change the variables starting on line 8
 @echo off
 setlocal enabledelayedexpansion 
 title=MineSwitcher
 set length=-1
 
 REM init vars
+REM MinersList gives each miner an index, if you want three miners it would be "0 1 2" and so on
 set MinersList=0 1
+REM Miners are the name of the actual task process for the specified index
 set Miners[0]="PhoenixMiner.exe"
 set Miners[1]="miner.exe"
+Rem Coins sets coin names to verify indices are correct
 set Coins[0]=Ethereum
 set Coins[1]=Raven
+Rem Paths sets the location of your regular start files
 set Paths[0]=PhoenixMiner_5.8c_Windows\1aeth+zil.bat
 set Paths[1]=gminer_2_74_windows64\mine_ravencoin.bat
 timeout /t 1 >null
