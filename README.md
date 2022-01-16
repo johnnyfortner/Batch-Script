@@ -7,6 +7,7 @@
 - Example: <br/> `start /b %cd%/gminer_2_74_windows64/miner.exe --algo kawpow --server us-rvn.2miners.com:6060 --user wallet.worker`
 
 ### Donation Addresses
+If you found this useful please consider donating to one of the following addresses:
 BTC: `39jKNoXoxtsdiUCFjU2ULV9AH2vHHMxK5P`\
 ETH: `0xa660e3ae6ea3e767dc8cedb38c6eaacdca9c1b3c`\
 Nano: `nano_1mrgkm6prabc5f3j341j6cxefxbt5hibdy9nio1ezgzs5uqouoqzjpojrss9`\
