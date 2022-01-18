@@ -1,10 +1,12 @@
-REM To use MineSwitcher simply put it in a directory above your miners and change the variables starting on line 8
+REM To use MineSwitcher simply put it in a directory above your miners and change the config starting on line 7
 @echo off
 setlocal enabledelayedexpansion 
 title=MineSwitcher
 set length=-1
 
-REM init vars
+REM CONFIG
+REM the amount of time each coin is mined in hours(no decimal places, must be whole numbers).
+set Time=1
 REM MinersList gives each miner an index, if you want three miners it would be "0 1 2" and so on
 set MinersList=0 1
 REM Miners are the name of the actual task process for the specified index
@@ -14,10 +16,14 @@ Rem Coins sets coin names to verify indices are correct
 set Coins[0]=Ethereum
 set Coins[1]=Raven
 Rem Paths sets the location of your regular start files
-set Paths[0]=PhoenixMiner_5.8c_Windows\1aeth+zil.bat
+set Paths[0]=PhoenixMiner_5.8c_Windows\mine_eth.bat
 set Paths[1]=gminer_2_74_windows64\mine_ravencoin.bat
-timeout /t 1 >null
 REM for ease of use do not edit below this line
+
+REM ///////////////////////////////// Start Mine Switcher ////////////////////////////////////
+echo Chosen to mine each coin for !Time! hour(s)
+timeout /t 1 >null
+set /a Timeout=60*60*!Time!
 REM find how many miners specified and display them
 (for %%i in (%MinersList%) do (set /a length+=1))
 set /a len=!length!+1
@@ -28,7 +34,6 @@ timeout /t 1 >null
 REM main loop
 :loop
 (for /l %%b in (0,1,!length!) do (
-
 timeout /t 1 >null
 echo MineSwitcher: !Coins[%%b]! 
 echo attempt to stop all miners
@@ -45,8 +50,8 @@ echo starting miner !Miners[%%b]!
 title=MineSwitcher: !Coins[%%b]!
 timeout /t 1 >null
 start /b "!Coins[%%b]!" "!Paths[%%b]!"
-echo waiting for 1 hour
-timeout /t 3600 >null
+echo waiting for !Time! hour(s)
+timeout /t !Timeout! >null
 ))
 goto loop
 
