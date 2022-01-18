@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 title=MineSwitcher
 set length=-1
 
-REM CONFIG
+REM ///////////////////////////////// CONFIG ////////////////////////////////////
 REM the amount of time each coin is mined in hours(no decimal places, must be whole numbers).
 set Time=1
 REM MinersList gives each miner an index, if you want three miners it would be "0 1 2" and so on
@@ -18,7 +18,8 @@ set Coins[1]=Raven
 Rem Paths sets the location of your regular start files
 set Paths[0]=PhoenixMiner_5.8c_Windows\mine_eth.bat
 set Paths[1]=gminer_2_74_windows64\mine_ravencoin.bat
-REM for ease of use do not edit below this line
+
+REM //////////////////// for ease of use do not edit below this line //////////////////////////
 
 REM ///////////////////////////////// Start Mine Switcher ////////////////////////////////////
 echo Chosen to mine each coin for !Time! hour(s)
