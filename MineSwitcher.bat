@@ -7,6 +7,7 @@ set length=-1
 REM ///////////////////////////////// CONFIG ////////////////////////////////////
 REM the amount of time each coin is mined in hours(no decimal places, must be whole numbers).
 set Time=1
+set HalfHours=1
 REM MinersList gives each miner an index, if you want three miners it would be "0 1 2" and so on
 set MinersList=0 1
 REM Miners are the name of the actual task process for the specified index
@@ -22,9 +23,9 @@ set Paths[1]=gminer_2_74_windows64\mine_ravencoin.bat
 REM //////////////////// for ease of use do not edit below this line //////////////////////////
 
 REM ///////////////////////////////// Start Mine Switcher ////////////////////////////////////
-echo Chosen to mine each coin for !Time! hour(s)
-timeout /t 1 >null
 set /a Timeout=60*60*!Time!
+set /a Timeout2=60*30*!HalfHours!
+echo Chosen to mine each coin for !Time! hour(s) and !HalfHours! half hour(s)
 REM find how many miners specified and display them
 (for %%i in (%MinersList%) do (set /a length+=1))
 set /a len=!length!+1
@@ -51,8 +52,9 @@ echo starting miner !Miners[%%b]!
 title=MineSwitcher: !Coins[%%b]!
 timeout /t 1 >null
 start /b "!Coins[%%b]!" "!Paths[%%b]!"
-echo waiting for !Time! hour(s)
-timeout /t !Timeout! >null
+set /a Timer=!Timeout! + !Timeout2!
+echo waiting for !Timer! seconds
+timeout /t !Timer! >null
 ))
 goto loop
 
