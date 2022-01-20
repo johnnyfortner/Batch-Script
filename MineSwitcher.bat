@@ -26,6 +26,7 @@ REM ///////////////////////////////// Start Mine Switcher //////////////////////
 set /a Timeout=60*60*!Time!
 set /a Timeout2=60*30*!HalfHours!
 echo Chosen to mine each coin for !Time! hour(s) and !HalfHours! half hour(s)
+timeout /t 1 >null
 REM find how many miners specified and display them
 (for %%i in (%MinersList%) do (set /a length+=1))
 set /a len=!length!+1
